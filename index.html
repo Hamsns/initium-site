@@ -132,22 +132,53 @@
     @media (max-width: 600px){
       .cards{grid-template-columns:1fr}
     }
-  </style>
+    /* --- Subtle tinted placeholders (very low saturation) --- */
+  :root{ --t-blue: rgba(90,169,255,0.08); --t-green: rgba(25,154,110,0.08); }
+  .thumb{ background: linear-gradient(135deg, var(--t-green), var(--t-blue)) !important; }
+  .cards .card:nth-child(2n) .thumb{ background: linear-gradient(135deg, var(--t-blue), var(--t-green)) !important; }
+  /* Header layout tweaks */
+  .nav-left{display:flex; align-items:center; gap:1.2rem}
+  .nav-left nav{display:flex; gap:1rem}
+  .socials{display:flex; gap:.5rem; align-items:center}
+  .socials a{display:grid; place-items:center; width:32px; height:32px; border-radius:50%; border:1px solid var(--green-600); color:var(--green-600); font-weight:700; font-size:.75rem}
+  .socials a:hover{background:var(--green-50)}
+  nav a.active{border-bottom:2px solid var(--green-600)}
+
+  /* Hero photo placeholder */
+  .hero-photo{margin-top:1rem; width:100%; aspect-ratio:21/9; border-radius:var(--radius); border:1px solid var(--border); background:linear-gradient(90deg, rgba(25,154,110,.08), rgba(90,169,255,.08)); background-size:cover; background-position:center}
+  /* Section tints to add colour without losing the white base */
+  #podcast{ background: rgba(25,154,110,.06); }
+  #blog{ background: rgba(90,169,255,.06); }
+  #podcast, #blog{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+  /* Section title accents */
+  .section-title h2{ position:relative; }
+  .section-title h2::after{ content:""; display:block; width:44px; height:3px; background:var(--green-600); border-radius:2px; margin-top:6px; }
+  #blog .section-title h2::after{ background:var(--blue-600); }
+</style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <h1>INITIUM</h1>
+      <div class="nav-left">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true"></div>
+          <h1>INITIUM</h1>
+        </div>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#featured" class="active">Featured</a>
+          <a href="#podcast">Podcast</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-      <nav style="display:flex; gap:1rem; align-items:center;">
-        <a href="#">Home</a>
-        <a href="#featured">Featured</a>
-        <a href="#podcast">Podcast</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Podcast platforms">🎧</a>
+      </div>
     </div>
   </header>
 
@@ -169,6 +200,9 @@
           <a href="#">Business</a>
           <a href="#">Tech</a>
         </div>
+        <!-- Replace the background with your students photo later:
+             Add style="background-image:url('https://...your-image.jpg')" to this div -->
+        <div class="hero-photo" role="img" aria-label="Students photo placeholder"></div>
       </div>
     </section>
 
